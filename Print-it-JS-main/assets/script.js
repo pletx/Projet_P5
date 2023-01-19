@@ -22,6 +22,8 @@ const Fleche_gauche = document.querySelector('.arrow_left');
 const slide = document.querySelector('.slide');
 const tagLine = document.querySelector('.tagline');
 
+const dots = document.querySelectorAll('.dot');
+
 Fleche_droite.addEventListener('click', Slide_suivant);
 Fleche_gauche.addEventListener('click', Slide_precedent);
 let Image_actuel=0
@@ -34,6 +36,7 @@ function Slide_suivant() {
 	}
 	slide.src = './assets/images/slideshow/' + slides[Image_actuel].image;
 	tagLine.innerHTML = slides[Image_actuel].tagLine;
+	Changment_point()
 }
 
 function Slide_precedent() {
@@ -44,5 +47,15 @@ function Slide_precedent() {
 	}
 
 	slide.src = './assets/images/slideshow/' + slides[Image_actuel].image;
+
 	tagLine.innerHTML = slides[Image_actuel].tagLine;
+
+
+	Changment_point() 
+}
+function Changment_point() {
+    dots.forEach(function(dot) {
+        dot.classList.remove('dot_selected');
+    });
+    dots[Image_actuel].classList.add('dot_selected');
 }
